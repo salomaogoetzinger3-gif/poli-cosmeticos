@@ -132,7 +132,7 @@ export default function Produto() {
             ))}
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div className="aligh-info">
           <p style={{ color: "#0000009a", fontSize: 12, letterSpacing: "1px" }}>
             {produto.tag}
           </p>
@@ -287,6 +287,7 @@ export default function Produto() {
                 onChange={(e) => setCep(e.target.value)}
                 style={{
                   flex: 1,
+                  minWidth: 0,
                   padding: 8,
                   border: "1px solid #ddd",
                   borderRadius: 6,

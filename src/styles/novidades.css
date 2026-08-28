@@ -67,11 +67,31 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  flex: 1 1 140px;
+  white-space: nowrap;
+  display: inline;
+}
+
+.btn-novidades1 {
+  padding: 20px;
+  border-radius: 30px;
+  font-size: clamp(15px, 0, 5vh, 30px);
+  cursor: pointer;
+  text-decoration: none;
+  color: #8a315c;
+  background-color: #fff;
+  border: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+  display: inline;
 }
 
 .aligh-btn1 {
-  gap: 20px;
+  gap: 12px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .btn-link {

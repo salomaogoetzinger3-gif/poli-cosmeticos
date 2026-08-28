@@ -137,6 +137,12 @@ input:focus {
   flex-direction: column;
 }
 
+.aligh-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 @media (max-width: 768px) {
   /* Esconde a sidebar lateral no mobile */
   .lista-categorias-produto {
@@ -155,6 +161,10 @@ input:focus {
     gap: 10px;
     flex-direction: row;
     margin-bottom: 10px;
+  }
+
+  .aligh-info {
+    align-items: center;
   }
 
   .layout-produtos {
