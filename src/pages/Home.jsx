@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <section className="catalogo" id="home">
       <Hero />
-      <Marcas />
-      <Apresentacao />
       <Ofertas />
       <Categorias />
+      <Apresentacao />
+      <Marcas />
       <Novidades />
     </section>
   );
