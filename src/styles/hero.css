@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 400px;
+  height: 450px;
   overflow: hidden;
 }
 .back-video {
@@ -10,6 +10,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.titulo-destaque {
+  font-family: "Neulis";
+  font-size: 2.3em;
+  color: #d46a95;
+  text-shadow:
+    0 0 5px #8a315c,
+    0 0 15px #8a315c,
+    0 0 30px #5c1f3d,
+    0 0 50px #5c1f3d;
 }
 
 .text-hero {
@@ -77,6 +88,18 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+.ver-destaques {
+  text-decoration: none;
+  color: #c4388d;
+  padding: 10px;
+}
+
+.ver-destaques:hover {
+  background-color: #ffd2e7;
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
 .hero .title-hero {
   font-family: "Neulis";
   font-size: 30px;
@@ -117,6 +140,12 @@
 .nav-icon {
   display: flex;
   justify-content: end;
+}
+
+@media screen and (max-width: 768px) {
+  .titulo-destaque {
+    font-size: 1.3em;
+  }
 }
 
 @media screen and (min-width: 768px) {

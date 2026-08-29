@@ -55,6 +55,15 @@ export default function Ofertas() {
           ))}
         </ul>
       </div>
+      <div style={{ textAlign: "center" }}>
+        <Link
+          to="/produtos?categoria=presentes"
+          className="ver-destaques"
+          style={{ display: "inline-block" }}
+        >
+          Ver mais ofertas
+        </Link>
+      </div>
     </section>
   );
 }
