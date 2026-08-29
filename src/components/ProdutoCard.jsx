@@ -8,11 +8,18 @@ export default function ProdutoCard({ produto }) {
 
   return (
     <li className={`card produto ${produto.categoria} ${produto.marca}`}>
-      <Link to={`/produto/${produto.slug}`} className="link-presentes">
+      <Link
+        to={`/produto/${produto.slug}`}
+        state={{ from: "catalogo" }}
+        className="link-presentes"
+      >
         <div className="img-box">
           <img className="img-card" src={produto.imagem} alt={produto.nome} />
         </div>
-        <div className="produto-texto" style={{ backgroundColor: "#f5f5f5", color: "#000" }}>
+        <div
+          className="produto-texto"
+          style={{ backgroundColor: "#f5f5f5", color: "#000" }}
+        >
           <div style={{ padding: 10 }}>
             <p style={{ color: "#0000009a", fontSize: 10 }}>{produto.tag}</p>
             <h1 id="produto-titulo">{produto.nome}</h1>
