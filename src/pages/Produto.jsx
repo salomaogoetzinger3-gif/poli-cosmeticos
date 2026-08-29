@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import { buscarProdutoPorSlug, buscarProdutos } from "../data/api";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export default function Produto() {
   const { slug } = useParams();
+  const location = useLocation();
+  const veioDaHome = location.state?.from === "home";
   const [produto, setProduto] = useState(null);
   const [relacionados, setRelacionados] = useState([]);
   const [carregando, setCarregando] = useState(true);
@@ -62,11 +64,10 @@ export default function Produto() {
             O produto que você procura não existe ou foi removido.
           </p>
           <Link
-            to="/produtos"
-            className="nav-link12"
-            style={{ display: "inline-block", marginTop: 20 }}
+            to={veioDaHome ? "/" : "/produtos"}
+            style={{ display: "inline-block", marginTop: "20" }}
           >
-            Voltar ao catálogo
+            ← {veioDaHome ? "Voltar ao início" : "Voltar ao catálogo"}
           </Link>
         </div>
       </section>
@@ -81,10 +82,10 @@ export default function Produto() {
   return (
     <section className="home-produtos">
       <Link
-        to="/produtos"
+        to={veioDaHome ? "/" : "/produtos"}
         style={{ color: "#8a315c", fontFamily: "'poppins', sans-serif" }}
       >
-        ← Voltar ao catálogo
+        ← {veioDaHome ? "Voltar ao início" : "Voltar ao catálogo"}
       </Link>
       <div className="align-texto-produto">
         <p className="produto-texto1" style={{ color: "#0000009a" }}>
