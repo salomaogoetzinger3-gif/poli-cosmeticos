@@ -31,14 +31,11 @@ export default function CustomProduto() {
               Personalize com carinho e surpreenda quem você ama.
             </p>
             <button className="button-custom-produto">
-              <img
-                src="public/pressets/gift-branco.png"
-                style={{ height: "30px" }}
-              />
+              <img src="/pressets/gift-branco.png" style={{ height: "30px" }} />
               Montar meu presente
             </button>
             <img
-              src="public/pressets/qualidades.png"
+              src="/pressets/qualidades.png"
               style={{ height: "50px", height: "20%" }}
             />
           </div>
