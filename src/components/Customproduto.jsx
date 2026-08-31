@@ -1,7 +1,11 @@
+import { Package } from "lucide-react";
+import { Heart } from "lucide-react";
+import { Tag } from "lucide-react";
+
 export default function CustomProduto() {
   return (
     <section className="monte-presente">
-      <div style={{ boxShadow: "0 1px 8px rgba(0, 0, 0, 0.05)" }}>
+      <div>
         <p className="monte-presente-titulo">
           Monte o seu{" "}
           <strong className="monte-presente-destaque">presente</strong>
@@ -11,7 +15,7 @@ export default function CustomProduto() {
       <div className="monte-presente-img-box">
         <img
           className="monte-presente-img"
-          src="/pressets/hero/hero2.jpeg"
+          src="/pressets/background.jpeg"
           alt="Monte seu presente"
         />
 
@@ -34,11 +38,35 @@ export default function CustomProduto() {
               <img src="/pressets/gift-branco.png" style={{ height: "30px" }} />
               Montar meu presente
             </button>
+            <div>
+              <ul
+                style={{ display: "flex", alignItems: "center", gap: "15px" }}
+              >
+                <li>
+                  <Package size={50} color="#8a315c" strokeWidth={1.5} />
+                  <p className="custom-quality">Embalagem especial</p>
+                </li>
+                <li>
+                  <Heart size={50} color="#8a315c" strokeWidth={1.5} />
+                  <p className="custom-quality">Embalagem especial</p>
+                </li>
+                <li>
+                  <Tag size={50} color="#8a315c" strokeWidth={1.5} />
+                  <p className="custom-quality">Embalagem especial</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="cesta-gift">
             <img
-              src="/pressets/qualidades.png"
-              style={{ height: "50px", height: "20%" }}
+              className="cesta-gift-img"
+              src="/pressets/background-gift.png"
+              alt="Monte seu presente"
             />
           </div>
+        </div>
+        <div className="custom-funcionalidades">
+          <h3>Como funciona</h3>
         </div>
       </div>
     </section>
