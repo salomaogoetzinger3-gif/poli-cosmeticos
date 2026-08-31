@@ -9,6 +9,7 @@
 @import url(./novidades.css);
 @import url(./produtos.css);
 @import url(./extras.css);
+@import url(./customproduto.css);
 
 @font-face {
   font-family: "Neulis";
