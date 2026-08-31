@@ -13,9 +13,10 @@
 .bloco-texto-subtitulo {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  color: #8a315c;
+  color: #c4388d;
   font-size: clamp(15px, 1.2vw, 18px);
   line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .bloco-texto-titulo {
@@ -24,19 +25,12 @@
   color: #4a1930;
   font-size: clamp(28px, 3.5vw, 40px);
   line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .bloco-texto-titulo em {
   font-style: italic;
   color: #c4388d;
-}
-
-.bloco-texto-subtitulo {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  color: #6b6b6b;
-  font-size: clamp(15px, 1.2vw, 18px);
-  line-height: 1.6;
 }
 
 .button-custom-produto {
