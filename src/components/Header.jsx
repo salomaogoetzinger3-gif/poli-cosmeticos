@@ -110,9 +110,29 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <Link to="/carrinho" style={{ position: "relative" }}>
                   <i className="fa-solid fa-cart-arrow-down"></i>
-                </a>
+                  {totalItens > 0 && (
+                    <span
+                      style={{
+                        position: "absolute",
+                        top: -8,
+                        right: -8,
+                        background: "#8a315c",
+                        color: "#fff",
+                        fontSize: 11,
+                        borderRadius: "50%",
+                        width: 18,
+                        height: 18,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {totalItens}
+                    </span>
+                  )}
+                </Link>
               </li>
             </ul>
           </div>
