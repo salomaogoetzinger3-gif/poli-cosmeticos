@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Produtos from "./pages/Produtos";
 import Produto from "./pages/Produto";
+import Carrinho from "./pages/Carrinho";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/produto/:slug" element={<Produto />} />
+          <Route path="/carrinho" element={<Carrinho />} />
         </Routes>
       </main>
       <Footer />

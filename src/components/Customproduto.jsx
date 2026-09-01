@@ -5,7 +5,7 @@ import { Tag } from "lucide-react";
 export default function CustomProduto() {
   return (
     <section className="monte-presente">
-      <div>
+      <div style={{ backgroundColor: "#4a1930" }}>
         <p className="monte-presente-titulo">
           Monte o seu{" "}
           <strong className="monte-presente-destaque">presente</strong>
@@ -57,9 +57,9 @@ export default function CustomProduto() {
               </ul>
             </div>
           </div>
-          <div className="cesta-gift">
+          <div className="cesta-gift entra-direita animar">
             <img
-              className="cesta-gift-img"
+              className="cesta-gift-img "
               src="/pressets/background-gift.png"
               alt="Monte seu presente"
             />

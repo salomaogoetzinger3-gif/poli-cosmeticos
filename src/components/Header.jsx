@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useCarrinho } from "../context/CarrinhoContext";
 
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [headerAtivo, setHeaderAtivo] = useState(false);
   const navigate = useNavigate();
+  const { totalItens } = useCarrinho();
 
   // Reproduz nav-bar.js: adiciona classe "ativo" ao header ao rolar a página
   useEffect(() => {
@@ -69,9 +71,32 @@ export default function Header() {
           </ul>
         </div>
         <div className="nav-carrinho">
-          <a className="links-nav" href="#">
-            <i className="fa-solid fa-cart-shopping"></i>
-          </a>
+          <Link
+            to="/carrinho"
+            style={{ position: "relative", fontSize: "20px", color: "#fff" }}
+          >
+            <i className="fa-solid fa-cart-arrow-down"></i>
+            {totalItens > 0 && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: -8,
+                  right: -8,
+                  background: "#8a315c",
+                  color: "#fff",
+                  fontSize: 11,
+                  borderRadius: "50%",
+                  width: 18,
+                  height: 18,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {totalItens}
+              </span>
+            )}
+          </Link>
           <a className="links-nav" href="#">
             <i className="fa-regular fa-user"></i>
           </a>

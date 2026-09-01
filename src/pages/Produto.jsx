@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { buscarProdutoPorSlug, buscarProdutos } from "../data/api";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { useCarrinho } from "../context/CarrinhoContext";
 
 export default function Produto() {
   const { slug } = useParams();
@@ -15,6 +16,7 @@ export default function Produto() {
   const [frete, setFrete] = useState(null);
   const [calculando, setCalculando] = useState(false);
   const [erroCep, setErroCep] = useState("");
+  const { adicionarItem } = useCarrinho();
   useEffect(() => {
     setCarregando(true);
     buscarProdutoPorSlug(slug).then((encontrado) => {
@@ -248,6 +250,7 @@ export default function Produto() {
             </button>
             <button
               className="btn-novidades"
+              onClick={() => adicionarItem(produto, quantidade)}
               style={{
                 alignSelf: "flex-start",
                 color: "#fff",
