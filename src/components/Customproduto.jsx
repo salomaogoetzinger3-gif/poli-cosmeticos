@@ -65,8 +65,83 @@ export default function CustomProduto() {
             />
           </div>
         </div>
-        <div className="custom-funcionalidades">
-          <h3>Como funciona</h3>
+        <div className="como-funciona">
+          <h2 className="como-funciona-titulo">
+            <span className="linha" /> <i className="fa-solid fa-heart"></i>{" "}
+            Como funciona <i className="fa-solid fa-heart"></i>{" "}
+            <span className="linha" />
+          </h2>
+
+          <div className="como-funciona-passos">
+            <div className="passo">
+              <div className="passo-numero">1</div>
+              <div className="passo-card">
+                <i className="fa-solid fa-box-open passo-icone"></i>
+                <h3>Escolha os produtos</h3>
+                <p>
+                  Navegue pelas categorias e selecione seus produtos favoritos.
+                </p>
+              </div>
+            </div>
+
+            <div className="passo-seta">
+              <i
+                className="fa-solid fa-arrow-right"
+                style={{ paddingTop: "80px" }}
+              ></i>
+            </div>
+            <div className="passo">
+              <div className="passo-numero">2</div>
+              <div className="passo-card">
+                <i className="fa-solid fa-gift passo-icone"></i>
+                <h3>Adicione à sua cesta</h3>
+                <p>Monte sua combinação perfeita de itens.</p>
+              </div>
+            </div>
+
+            <div className="passo-seta">
+              <i
+                className="fa-solid fa-arrow-right"
+                style={{ paddingTop: "80px" }}
+              ></i>
+            </div>
+
+            <div className="passo">
+              <div className="passo-numero">3</div>
+              <div className="passo-card">
+                <i className="fa-solid fa-box passo-icone"></i>
+                <h3>Personalize seu presente</h3>
+                <p>Escolha a embalagem, mensagem e detalhes especiais.</p>
+              </div>
+            </div>
+
+            <div className="passo-seta">
+              <i
+                className="fa-solid fa-arrow-right"
+                style={{ paddingTop: "80px" }}
+              ></i>
+            </div>
+
+            <div className="passo">
+              <div className="passo-numero">4</div>
+              <div className="passo-card">
+                <i className="fa-solid fa-bag-shopping passo-icone"></i>
+                <h3>Finalize e surpreenda</h3>
+                <p>
+                  Seu presente será preparado com todo carinho para encantar!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="detalhe-faixa">
+          <div className="detalhe-faixa-texto">
+            <h3>Cada detalhe faz a diferença!</h3>
+            <p>
+              Nossos presentes são preparados com muito amor e atenção para
+              criar momentos inesquecíveis.
+            </p>
+          </div>
         </div>
       </div>
     </section>
