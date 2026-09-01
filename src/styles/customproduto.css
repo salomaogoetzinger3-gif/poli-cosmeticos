@@ -59,7 +59,7 @@
 .monte-presente-titulo {
   display: inline-block;
   margin: 20px;
-  color: #000;
+  color: #fff;
   font-size: clamp(20px, 2.5vw, 50px);
   font-family: "Poppins", sans-serif;
 }
@@ -87,6 +87,19 @@
   width: 540px;
   position: absolute;
   right: 0;
+}
+
+.entra-direita {
+  opacity: 0;
+  transform: translateX(100px);
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
+}
+
+.entra-direita.ativo {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Como funciona */
