@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <section className="catalogo" id="home">
       <Hero />
-      <Ofertas />
       <Customproduto />
+      <Ofertas />
       <Categorias />
       <Apresentacao />
       <Marcas />
