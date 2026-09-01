@@ -5,7 +5,7 @@ import { Tag } from "lucide-react";
 export default function CustomProduto() {
   return (
     <section className="monte-presente">
-      <div style={{ backgroundColor: "#4a1930" }}>
+      <div style={{ backgroundColor: "#fff" }}>
         <p className="monte-presente-titulo">
           Monte o seu{" "}
           <strong className="monte-presente-destaque">presente</strong>
