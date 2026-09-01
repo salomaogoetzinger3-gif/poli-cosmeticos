@@ -13,9 +13,9 @@ export default function CustomProduto() {
       </div>
 
       <div className="monte-presente-img-box">
-        <img
+        <div
           className="monte-presente-img"
-          src="/pressets/background.jpeg"
+          style={{ backgroundColor: "#F3BCC6" }}
           alt="Monte seu presente"
         />
 
@@ -48,11 +48,11 @@ export default function CustomProduto() {
                 </li>
                 <li>
                   <Heart size={50} color="#8a315c" strokeWidth={1.5} />
-                  <p className="custom-quality">Embalagem especial</p>
+                  <p className="custom-quality">Feito com carinho</p>
                 </li>
                 <li>
                   <Tag size={50} color="#8a315c" strokeWidth={1.5} />
-                  <p className="custom-quality">Embalagem especial</p>
+                  <p className="custom-quality">Personalize do seu jeito</p>
                 </li>
               </ul>
             </div>
