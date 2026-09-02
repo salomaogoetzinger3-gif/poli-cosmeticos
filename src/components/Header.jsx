@@ -71,6 +71,13 @@ export default function Header() {
           </ul>
         </div>
         <div className="nav-carrinho">
+          <ul>
+            <li>
+              <a href="#" className="favoritos">
+                <i className="fa-solid fa-heart"></i>
+              </a>
+            </li>
+          </ul>
           <Link
             to="/carrinho"
             style={{ position: "relative", fontSize: "20px", color: "#fff" }}
