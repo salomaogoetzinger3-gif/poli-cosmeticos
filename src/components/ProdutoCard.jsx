@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function ProdutoCard({ produto }) {
+export default function ProdutoCard({ produto, origem = "catalogo", mostrarAvaliacao = true }) {
   const precoFormatado = produto.preco.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -10,25 +10,22 @@ export default function ProdutoCard({ produto }) {
     <li className={`card produto ${produto.categoria} ${produto.marca}`}>
       <Link
         to={`/produto/${produto.slug}`}
-        state={{ from: "catalogo" }}
+        state={{ from: origem }}
         className="link-presentes"
       >
         <div className="img-box">
           <img className="img-card" src={produto.imagem} alt={produto.nome} />
         </div>
-        <div
-          className="produto-texto"
-          style={{ backgroundColor: "#f5f5f5", color: "#000" }}
-        >
-          <div style={{ padding: 10 }}>
-            <p style={{ color: "#0000009a", fontSize: 10 }}>{produto.tag}</p>
-            <h1 id="produto-titulo">{produto.nome}</h1>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <p style={{ color: "#8a315c" }}>★★★★★</p>
-              <p style={{ fontSize: 10 }}>{produto.avaliacao}</p>
+        <div className="produto-texto">
+          <p className="produto-card-tag">{produto.tag}</p>
+          <h3 className="produto-card-titulo">{produto.nome}</h3>
+          {mostrarAvaliacao && (
+            <div className="produto-card-avaliacao">
+              <span className="estrelas">★★★★★</span>
+              <span>{produto.avaliacao}</span>
             </div>
-            <h1 id="produto-preco">{precoFormatado}</h1>
-          </div>
+          )}
+          <p className="produto-card-preco">{precoFormatado}</p>
         </div>
       </Link>
     </li>

@@ -8,12 +8,74 @@
 @import url(./visitados.css);
 @import url(./novidades.css);
 @import url(./produtos.css);
-@import url(./extras.css);
+@import url(./produto.css);
+@import url(./carrinho.css);
 @import url(./customproduto.css);
 
 @font-face {
   font-family: "Neulis";
   src: url("/fonts/neulis-regular.ttf") format("truetype");
+}
+
+:root {
+  --background-primary-color: #8a315c;
+  --background-secondary-color: #c4388d;
+  --background-tertiary-color: #cc71a4;
+  --background-quaternary-color: #e6b3d9;
+  --background-quinaria-color: #ffd2e7;
+  --background-sixnaria-color: #ffffff;
+  --title-color: #efeecc;
+  --text-secundary-color: #d8c27a;
+
+  /* Tipografia fluida: cresce suavemente entre ~320px e ~1920px.
+     Tudo em rem, então também acompanha o tamanho-base do <html>. */
+  --fs-2xs: clamp(0.625rem, 0.6rem + 0.1vw, 0.75rem);
+  --fs-xs: clamp(0.75rem, 0.71rem + 0.15vw, 0.875rem);
+  --fs-sm: clamp(0.8125rem, 0.77rem + 0.2vw, 0.9375rem);
+  --fs-base: clamp(0.9375rem, 0.89rem + 0.25vw, 1.0625rem);
+  --fs-md: clamp(1rem, 0.93rem + 0.4vw, 1.25rem);
+  --fs-lg: clamp(1.25rem, 1.08rem + 0.8vw, 1.75rem);
+  --fs-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
+  --fs-2xl: clamp(1.875rem, 1.4rem + 2.2vw, 3.25rem);
+  --fs-3xl: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+
+  /* Espaçamentos e largura máxima do conteúdo */
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --container: 82.5rem;
+  --container-wide: 90rem;
+  --section-space: clamp(2.5rem, 2rem + 3vw, 5rem);
+
+  /* Padding lateral que centraliza o conteúdo em --container,
+     mantendo o fundo da seção em largura total */
+  --pad-inline: max(var(--gutter), calc((100% - var(--container)) / 2));
+}
+
+/* Em telas grandes, aumenta a base do rem: todo o layout escala junto
+   (fontes, espaçamentos, cards e largura máxima do container). */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media screen and (min-width: 1680px) {
+  html {
+    font-size: 106.25%; /* 17px */
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 112.5%; /* 18px */
+  }
+}
+@media screen and (min-width: 2400px) {
+  html {
+    font-size: 131.25%; /* 21px */
+  }
+}
+@media screen and (min-width: 3200px) {
+  html {
+    font-size: 162.5%; /* 26px */
+  }
 }
 
 *,
@@ -28,6 +90,13 @@ body {
   background-color: #8a315c;
   color: #ffffff;
   font-family: "Neulis";
+  font-size: var(--fs-base);
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
 }
 
 ul {
@@ -63,13 +132,11 @@ p {
   transform: translateY(0);
 }
 
-:root {
-  --background-primary-color: #8a315c;
-  --background-secondary-color: #c4388d;
-  --background-tertiary-color: #cc71a4;
-  --background-quaternary-color: #e6b3d9;
-  --background-quinaria-color: #ffd2e7;
-  --background-sixnaria-color: #ffffff;
-  --title-color: #efeecc;
-  --text-secundary-color: #d8c27a;
+@media (prefers-reduced-motion: reduce) {
+  .animar,
+  .entra-direita {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

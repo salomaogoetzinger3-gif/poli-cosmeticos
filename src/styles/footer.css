@@ -9,12 +9,12 @@
   --rodape-fonte: Poppins, sans-serif;
   --rodape-peso: 300;
   --titulo-fonte: "Playfair Display", serif;
-  --titulo-tam: 16px;
+  --titulo-tam: var(--fs-md);
   --titulo-peso: 400;
   --titulo-caixa: none;
   --titulo-track: 0;
   --logo-fonte: "Playfair Display", serif;
-  --logo-tam: 30px;
+  --logo-tam: var(--fs-xl);
   --logo-peso: 400;
   --logo-estilo: normal;
   --logo-caixa: none;
@@ -30,16 +30,14 @@
   color: var(--rodape-texto);
   font-family: var(--rodape-fonte);
   border-top: var(--rodape-topo);
-  padding: 72px 72px 0;
+  padding: clamp(2.75rem, 2rem + 3vw, 4.5rem) var(--pad-inline) 0;
 }
 
 .rodape__grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-  gap: 64px;
-  max-width: 1320px;
-  margin: 0 auto;
-  padding-bottom: 64px;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
 }
 
 .rodape__col {
@@ -63,8 +61,8 @@
 
 .rodape__sobre {
   margin: 0;
-  max-width: 300px;
-  font-size: 14px;
+  max-width: 20rem;
+  font-size: var(--fs-sm);
   font-weight: var(--rodape-peso);
   line-height: 1.75;
   color: var(--rodape-suave);
@@ -78,11 +76,11 @@
 }
 
 .rodape__social a {
-  width: 44px;
-  height: 44px;
+  width: 2.75rem;
+  height: 2.75rem;
   display: grid;
   place-items: center;
-  font-size: 15px;
+  font-size: var(--fs-sm);
   color: var(--rodape-destaque);
   background: var(--social-bg);
   border: var(--social-borda);
@@ -109,8 +107,8 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 11px;
-  font-size: 14px;
+  gap: 0.7rem;
+  font-size: var(--fs-sm);
   font-weight: var(--rodape-peso);
   color: var(--rodape-link);
 }
@@ -123,19 +121,18 @@
   color: var(--rodape-destaque);
 }
 .rodape__horario {
+  font-size: var(--fs-sm);
   line-height: 1.6;
   color: var(--rodape-suave);
 }
 
 .rodape__base {
-  max-width: 1320px;
-  margin: 0 auto;
   border-top: 1px solid var(--rodape-linha);
-  padding: 26px 0;
+  padding: 1.6rem 0;
   display: flex;
   justify-content: space-between;
-  gap: 24px;
-  font-size: 12px;
+  gap: 1.5rem;
+  font-size: var(--fs-xs);
   font-weight: var(--rodape-peso);
   color: var(--rodape-fraco);
   letter-spacing: 0.02em;
@@ -153,12 +150,8 @@
 }
 
 @media (max-width: 1024px) {
-  .rodape {
-    padding: 56px 32px 0;
-  }
   .rodape__grid {
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
   }
   .rodape__marca {
     grid-column: 1 / -1;
@@ -166,13 +159,8 @@
 }
 
 @media (max-width: 600px) {
-  .rodape {
-    padding: 44px 22px 0;
-  }
   .rodape__grid {
     grid-template-columns: 1fr;
-    gap: 34px;
-    padding-bottom: 40px;
   }
   .rodape__base {
     flex-direction: column;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { buscarProdutoPorSlug, buscarProdutos } from "../data/api";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useCarrinho } from "../context/CarrinhoContext";
+import ProdutoCard from "../components/ProdutoCard";
 
 export default function Produto() {
   const { slug } = useParams();
@@ -54,7 +55,11 @@ export default function Produto() {
     }, 700);
   }
   if (carregando) {
-    return <p style={{ padding: 40 }}>Carregando produto...</p>;
+    return (
+      <section className="home-produtos">
+        <p className="produto-carregando">Carregando produto...</p>
+      </section>
+    );
   }
 
   if (!produto) {
@@ -65,10 +70,7 @@ export default function Produto() {
           <p className="produto-texto2">
             O produto que você procura não existe ou foi removido.
           </p>
-          <Link
-            to={veioDaHome ? "/" : "/produtos"}
-            style={{ display: "inline-block", marginTop: "20" }}
-          >
+          <Link to={veioDaHome ? "/" : "/produtos"} className="produto-voltar">
             ← {veioDaHome ? "Voltar ao início" : "Voltar ao catálogo"}
           </Link>
         </div>
@@ -83,255 +85,112 @@ export default function Produto() {
 
   return (
     <section className="home-produtos">
-      <Link
-        to={veioDaHome ? "/" : "/produtos"}
-        style={{ color: "#8a315c", fontFamily: "'poppins', sans-serif" }}
-      >
+      <Link to={veioDaHome ? "/" : "/produtos"} className="produto-voltar">
         ← {veioDaHome ? "Voltar ao início" : "Voltar ao catálogo"}
       </Link>
       <div className="align-texto-produto">
-        <p className="produto-texto1" style={{ color: "#0000009a" }}>
-          {produto.marcaLabel}
-        </p>
+        <p className="produto-texto1">{produto.marcaLabel}</p>
         <h1 className="produtos-titulo1">{produto.nome}</h1>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(600px, 420px) 1fr",
-          gap: "40px",
-          marginTop: 30,
-        }}
-        className="produto-detalhe"
-      >
+      <div className="produto-detalhe">
         <div className="galery-photos">
-          <div className="img-box" style={{ borderRadius: 8 }}>
+          <div className="img-box produto-foto-principal">
             <img
               className="img-card"
               src={fotos[imagemAtiva]}
               alt={produto.nome}
             />
           </div>
-          <div className="galery-photos-img">
-            {fotos.map((foto, i) => (
-              <img
-                key={foto}
-                src={foto}
-                alt={`${produto.nome} ${i + 1}`}
-                onClick={() => setImagemAtiva(i)}
-                style={{
-                  width: 64,
-                  height: 64,
-                  objectFit: "cover",
-                  borderRadius: 6,
-                  cursor: "pointer",
-                  border:
-                    i === imagemAtiva
-                      ? "2px solid #8a315c"
-                      : "2px solid transparent",
-                }}
-              />
-            ))}
-          </div>
+          {fotos.length > 1 && (
+            <div className="galery-photos-img">
+              {fotos.map((foto, i) => (
+                <img
+                  key={foto}
+                  src={foto}
+                  alt={`${produto.nome} ${i + 1}`}
+                  onClick={() => setImagemAtiva(i)}
+                  className={`produto-miniatura${i === imagemAtiva ? " ativa" : ""}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
         <div className="aligh-info">
-          <p style={{ color: "#0000009a", fontSize: 12, letterSpacing: "1px" }}>
-            {produto.tag}
-          </p>
+          <p className="produto-tag">{produto.tag}</p>
           {produto.subcategoria && (
-            <span
-              style={{
-                background: "#f5d9e8",
-                color: "#8a315c",
-                fontSize: 12,
-                padding: "3px 10px",
-                borderRadius: 20,
-              }}
-            >
-              {produto.subcategoria}
-            </span>
+            <span className="produto-subcategoria">{produto.subcategoria}</span>
           )}
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <p style={{ color: "#8a315c", fontSize: 20 }}>★★★★★</p>
-            <p style={{ color: "#000", fontSize: 14 }}>{produto.avaliacao}</p>
+          <div className="produto-avaliacao">
+            <p className="estrelas">★★★★★</p>
+            <p>{produto.avaliacao}</p>
           </div>
           {produto.selos && (
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div className="produto-selos">
               {produto.selos
                 .split(",")
                 .map((selo) => selo.trim())
                 .filter(Boolean)
                 .map((selo) => (
-                  <span
-                    key={selo}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      fontSize: 13,
-                      color: "#000",
-                    }}
-                  >
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#8a315c" }}
-                    ></i>
+                  <span key={selo} className="produto-selo">
+                    <i className="fa-solid fa-circle-check"></i>
                     {selo}
                   </span>
                 ))}
             </div>
           )}
-          <h2 style={{ color: "#c4388d", fontSize: "clamp(28px, 4vw, 40px)" }}>
-            {precoFormatado}
-          </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <span style={{ fontSize: 14, color: "#000" }}>Quantidade:</span>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                border: "1px solid #ddd",
-                borderRadius: 8,
-                width: "fit-content",
-                color: "#000",
-                padding: "5px",
-              }}
-            >
+          <h2 className="produto-preco">{precoFormatado}</h2>
+          <div className="produto-quantidade">
+            <span>Quantidade:</span>
+            <div className="seletor-quantidade">
               <button
                 onClick={() => setQuantidade((q) => Math.max(1, q - 1))}
-                style={{
-                  padding: "8px 14px",
-                  border: "none",
-                  background: "none",
-                  fontSize: 18,
-                  cursor: "pointer",
-                }}
+                aria-label="Diminuir quantidade"
               >
                 <i className="fa-solid fa-minus"></i>
               </button>
-              <span style={{ minWidth: 20, textAlign: "center" }}>
-                {quantidade}
-              </span>
+              <span>{quantidade}</span>
               <button
                 onClick={() => setQuantidade((q) => q + 1)}
-                style={{
-                  padding: "8px 14px",
-                  border: "none",
-                  background: "none",
-                  fontSize: 18,
-                  cursor: "pointer",
-                }}
+                aria-label="Aumentar quantidade"
               >
                 <i className="fa-solid fa-plus"></i>
               </button>
             </div>
           </div>
-          <p
-            style={{
-              color: "#0000009a",
-              fontFamily: "'poppins', sans-serif",
-              lineHeight: 1.6,
-            }}
-          >
-            {produto.descricao}
-          </p>
+          <p className="produto-descricao">{produto.descricao}</p>
           <div className="aligh-btn1">
-            <button
-              className="btn-novidades"
-              style={{
-                alignSelf: "flex-start",
-                color: "#fff",
-                backgroundColor: "#8a315c",
-              }}
-            >
+            <button className="btn-novidades btn-roxo">
               <i className="fa-solid fa-bag-shopping"></i>Comprar
             </button>
             <button
-              className="btn-novidades"
+              className="btn-novidades btn-roxo"
               onClick={() => adicionarItem(produto, quantidade)}
-              style={{
-                alignSelf: "flex-start",
-                color: "#fff",
-                backgroundColor: "#8a315c",
-              }}
             >
               <i className="fa-solid fa-cart-shopping"></i>Adicionar ao carrinho
             </button>
           </div>
 
-          <div
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: 8,
-              padding: 16,
-              maxWidth: 340,
-            }}
-          >
-            <p
-              style={{
-                color: "#000",
-                fontSize: 14,
-                marginBottom: 8,
-                fontFamily: "'poppins', sans-serif",
-              }}
-            >
-              <i
-                className="fa-solid fa-truck"
-                style={{ color: "#8a315c", marginRight: 6 }}
-              ></i>
+          <div className="frete-box">
+            <p className="frete-titulo">
+              <i className="fa-solid fa-truck"></i>
               Calcular frete e prazo
             </p>
-            <div style={{ display: "flex", gap: 8 }}>
+            <div className="frete-form">
               <input
                 type="text"
+                inputMode="numeric"
                 placeholder="Digite seu CEP"
                 value={cep}
                 onChange={(e) => setCep(e.target.value)}
-                style={{
-                  flex: 1,
-                  minWidth: 0,
-                  padding: 8,
-                  border: "1px solid #ddd",
-                  borderRadius: 6,
-                }}
               />
-              <button
-                onClick={calcularFrete}
-                style={{
-                  padding: "8px 16px",
-                  border: "none",
-                  borderRadius: 6,
-                  background: "#8a315c",
-                  color: "#fff",
-                  cursor: "pointer",
-                }}
-              >
+              <button onClick={calcularFrete}>
                 {calculando ? "..." : "Calcular"}
               </button>
             </div>
-            {erroCep && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: 12,
-                  marginTop: 6,
-                  fontFamily: "'poppins', sans-serif",
-                }}
-              >
-                {erroCep}
-              </p>
-            )}
+            {erroCep && <p className="frete-erro">{erroCep}</p>}
             {frete && (
-              <p
-                style={{
-                  color: "#000",
-                  fontSize: 13,
-                  marginTop: 10,
-                  fontFamily: "'poppins', sans-serif",
-                }}
-              >
+              <p className="frete-resultado">
                 Entrega em até <strong>{frete.dias} dias úteis</strong> · R${" "}
                 {frete.valor.toFixed(2)}
               </p>
@@ -341,61 +200,21 @@ export default function Produto() {
       </div>
 
       {relacionados.length > 0 && (
-        <div style={{ marginTop: 60 }}>
-          <h2 className="title-categorias" style={{ textAlign: "left" }}>
+        <div className="produto-relacionados">
+          <h2 className="title-categorias">
             Você também pode <strong>gostar</strong>
           </h2>
           <div className="align-produtos-cards">
-            <ul
-              style={{
-                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 260px))",
-              }}
-            >
+            <ul>
               {relacionados.map((p) => (
-                <li
-                  className={`card produto ${p.categoria} ${p.marca}`}
-                  key={p.slug}
-                >
-                  <Link to={`/produto/${p.slug}`} className="link-presentes">
-                    <div className="img-box">
-                      <img className="img-card" src={p.imagem} alt={p.nome} />
-                    </div>
-                    <div
-                      className="produto-texto"
-                      style={{ backgroundColor: "#f5f5f5", color: "#000" }}
-                    >
-                      <div style={{ padding: 10 }}>
-                        <p style={{ color: "#0000009a", fontSize: 10 }}>
-                          {p.tag}
-                        </p>
-                        <h1 id="produto-titulo">{p.nome}</h1>
-                        <h1 id="produto-preco">
-                          {p.preco.toLocaleString("pt-BR", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
-                        </h1>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
+                <ProdutoCard produto={p} key={p.slug} mostrarAvaliacao={false} />
               ))}
             </ul>
           </div>
         </div>
       )}
       {produto.subdescricao && (
-        <p
-          style={{
-            color: "#0000009a",
-            marginTop: 32,
-            lineHeight: 1.7,
-            fontFamily: "'poppins', sans-serif",
-            maxWidth: 800,
-          }}
-        >
-          {produto.subdescricao}
-        </p>
+        <p className="produto-subdescricao">{produto.subdescricao}</p>
       )}
     </section>
   );

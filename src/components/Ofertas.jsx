@@ -21,49 +21,41 @@ export default function Ofertas() {
       <h2 className="title-categorias">
         OFERTAS <strong>DESSE MÊS</strong>
       </h2>
-      <div className="cards-categorias">
-        <ul className="align-cards">
-          {ofertas.map((oferta) => (
-            <li className="card" style={{ maxWidth: 280 }} key={oferta.slug}>
-              <Link
-                to={`/produto/${oferta.slug}`}
-                state={{ from: "home" }}
-                className="link-presentes"
-              >
-                <div className="img-box">
-                  <img
-                    className="img-card"
-                    src={oferta.imagem}
-                    alt={oferta.nome}
-                  />
-                </div>
-                <span className="cards-titulo-categorias">
-                  {oferta.marcaLabel}
-                  <h3>{oferta.nome}</h3>
-                </span>
-                <h4>
-                  {oferta.preco
-                    ? oferta.preco.toLocaleString("pt-BR", {
-                        style: "currency",
-                        currency: "BRL",
-                      })
-                    : "Consulte o preço"}
-                  <i className="fa-solid fa-arrow-right"></i>
-                </h4>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <Link
-          to="/produtos?categoria=presentes"
-          className="ver-destaques"
-          style={{ display: "inline-block" }}
-        >
-          Ver mais ofertas
-        </Link>
-      </div>
+      <ul className="align-cards">
+        {ofertas.map((oferta) => (
+          <li className="card" key={oferta.slug}>
+            <Link
+              to={`/produto/${oferta.slug}`}
+              state={{ from: "home" }}
+              className="link-presentes"
+            >
+              <div className="img-box">
+                <img
+                  className="img-card"
+                  src={oferta.imagem}
+                  alt={oferta.nome}
+                />
+              </div>
+              <span className="cards-titulo-categorias">
+                {oferta.marcaLabel}
+                <h3>{oferta.nome}</h3>
+              </span>
+              <h4>
+                {oferta.preco
+                  ? oferta.preco.toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })
+                  : "Consulte o preço"}
+                <i className="fa-solid fa-arrow-right"></i>
+              </h4>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Link to="/produtos?categoria=presentes" className="ver-destaques">
+        Ver mais ofertas
+      </Link>
     </section>
   );
 }

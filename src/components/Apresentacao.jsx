@@ -53,26 +53,21 @@ export default function Apresentacao() {
           </ul>
         </div>
         <div className="slider">
-          <div className="slides">
-            <div
-              className="slide primeiro"
-              style={{ marginLeft: `-${slideAtual * 25}%` }}
-            >
-              {imagens.map((src) => (
-                <img key={src} src={src} alt="Imagem natura" />
-              ))}
-            </div>
-            <div className="navegation-auto">
-              {imagens.map((_, i) => (
-                <div className="auto-btn" key={i} />
-              ))}
-            </div>
+          <div
+            className="slides"
+            style={{ transform: `translateX(-${slideAtual * 100}%)` }}
+          >
+            {imagens.map((src) => (
+              <img key={src} src={src} alt="Poli Cosméticos" />
+            ))}
           </div>
           <div className="manual-navegation">
             {imagens.map((_, i) => (
-              <label
+              <button
                 key={i}
-                className="manual-btn"
+                type="button"
+                className={`manual-btn${i === slideAtual ? " ativo" : ""}`}
+                aria-label={`Ir para imagem ${i + 1}`}
                 onClick={() => setSlideAtual(i)}
               />
             ))}
