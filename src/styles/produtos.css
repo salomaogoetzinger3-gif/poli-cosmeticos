@@ -1,17 +1,15 @@
-.home-produtos {
+/* Página de catálogo / páginas internas: conteúdo centralizado no container */
+.home-produtos,
+.home-produtos1 {
   background-color: white;
+  color: #000;
   width: 100%;
-  height: 100%;
   display: block;
-  padding: 5vw;
+  padding: clamp(1.5rem, 4vw, 3.5rem) var(--pad-inline);
 }
 
 .home-produtos1 {
-  background-color: white;
-  width: 100%;
-  height: 100vh;
-  display: block;
-  padding: 5vw;
+  min-height: 70vh;
 }
 
 .align-texto-produto {
@@ -19,44 +17,58 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .titulo-categoria-produto {
   color: #0000009a;
+  font-size: var(--fs-sm);
+  letter-spacing: 1px;
 }
 
 .produto-texto1 {
-  color: #000;
+  color: #0000009a;
+  font-size: var(--fs-sm);
+  letter-spacing: 1px;
 }
 
 .produto-texto2 {
   font-family: "poppins", sans-serif;
+  font-size: var(--fs-base);
   color: #000;
-  width: 40%;
+  max-width: 38rem;
 }
 
 .produtos-titulo1 {
   color: #000;
+  font-size: var(--fs-2xl);
+  line-height: 1.2;
+  margin: 0;
 }
 .produtos-titulo1 span {
-  font-size: clamp(30px, 3vw, 50px);
+  font-size: 1.1em;
   color: #c4388d;
   font-family: "Playfair", serif;
 }
 
 .align-pesquisa-produtos {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 15px;
+  align-items: center;
+  gap: 0.9rem;
+  margin: clamp(1.25rem, 3vw, 2rem) 0;
+}
+
+.align-pesquisa-produtos img {
+  width: 1.5rem;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .pesquisa-produtos {
-  margin-top: 4vh;
-  margin-bottom: 2vh;
   width: 100%;
-  padding: 10px;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: var(--fs-base);
   border-radius: 8px;
   border: 1px solid #e8e0e0;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
@@ -67,19 +79,22 @@ input:focus {
   box-shadow: 0 0 5px #ff69b4;
 }
 
+.lista-categorias-produto {
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
+}
+
 .lista-produto-texto {
   font-family: "poppins", sans-serif;
+  font-size: var(--fs-sm);
 }
 
-.categorias-produto {
-  display: inline-block;
-  margin: 10px 0;
-  list-style: none;
-}
-
+.categorias-produto,
 .categorias-produtos-marcas {
-  display: inline-block;
-  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0.6rem 0 1.25rem;
   list-style: none;
 }
 
@@ -99,56 +114,78 @@ input:focus {
   font-family: "poppins", sans-serif;
   align-items: center;
   display: flex;
-  padding: 10px;
+  padding: 0.6rem 0.75rem;
 }
 
-#produto-titulo {
-  font-size: clamp(15px, 0.5vw, 20px);
+/* Texto dos cards de produto */
+.produto-texto {
+  background-color: #f5f5f5;
+  color: #000;
+  padding: 0.625rem 0.75rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
 }
 
-#produto-preco {
-  font-size: clamp(15px, 2vw, 20px);
+.produto-card-tag {
+  color: #0000009a;
+  font-size: var(--fs-2xs);
+}
+
+.produto-texto .produto-card-titulo {
+  font-family: "Neulis", sans-serif;
+  font-size: var(--fs-base);
+  color: #000;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.produto-card-avaliacao {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: var(--fs-2xs);
+}
+
+.produto-card-avaliacao .estrelas {
+  color: #8a315c;
+  font-size: var(--fs-sm);
+}
+
+.produto-card-preco {
+  font-size: var(--fs-md);
+  font-weight: 700;
 }
 
 /* cards-produtos */
+.layout-produtos {
+  display: grid;
+  grid-template-columns: clamp(11rem, 15vw, 15rem) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
 
 .align-produtos-cards ul {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
-.layout-produtos {
-  display: grid;
-  grid-template-columns: 250px 1fr;
+.produtos-vazio {
+  color: #0000009a;
+  grid-column: 1 / -1;
 }
 
-/* ============================================
-   FILTRO MOBILE - Poli Cosméticos
-   Adicione este bloco no seu globalCss.css
-   ============================================ */
-
-/* ---------- Botão Filtros (só aparece no mobile) ---------- */
+/* ---------- Botão Filtros e drawer (só aparecem no mobile) ---------- */
 .btn-filtros-mobile {
   display: none;
 }
 
-.galery-photos {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 30px;
-}
-
-.galery-photos-img {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-}
-
-.aligh-info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+@media (min-width: 769px) {
+  .filtro-drawer,
+  .filtro-overlay.ativo {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -157,42 +194,17 @@ input:focus {
     display: none;
   }
 
-  .produto-texto2 {
-    width: 100%;
-  }
-
-  .galery-photos {
-    flex-direction: column;
-    gap: 30px;
-  }
-  .galery-photos-img {
-    gap: 10px;
-    flex-direction: row;
-    margin-bottom: 10px;
-  }
-
-  .aligh-info {
-    align-items: center;
-  }
-
   .layout-produtos {
-    display: block !important;
-    grid-template-columns: unset !important;
-  }
-
-  /* Garante que o grid inline do index seja sobrescrito */
-  .home-produtos > div[style] {
-    display: block !important;
-    grid-template-columns: unset !important;
+    display: block;
   }
 
   /* Botão Filtros visível no mobile */
   .btn-filtros-mobile {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.6rem;
     width: 100%;
-    padding: 16px 20px;
+    padding: 1rem 1.25rem;
     background: #fff;
     border: 1px solid #e8e0e0;
     border-radius: 14px;
@@ -200,7 +212,7 @@ input:focus {
     font-weight: 500;
     color: #2c1a1a;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     transition: background 0.2s;
   }
@@ -215,16 +227,8 @@ input:focus {
 
   /* Cards em 2 colunas no mobile */
   .align-produtos-cards ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .align-produtos-cards .card {
-    margin: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
   }
 }
 
@@ -234,7 +238,7 @@ input:focus {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 998;
+  z-index: 1001;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -252,16 +256,22 @@ input:focus {
   right: 0;
   background: #fff;
   border-radius: 24px 24px 0 0;
-  z-index: 999;
-  padding: 0 24px 40px;
+  z-index: 1002;
+  padding: 0 1.5rem 2.5rem;
   transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  visibility: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0s linear 0.35s;
   max-height: 85vh;
+  max-height: 85dvh;
   overflow-y: auto;
 }
 
 .filtro-drawer.ativo {
   transform: translateY(0);
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* Linha de arraste no topo */
@@ -278,7 +288,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
 }
 
 .filtro-drawer-titulo {
@@ -313,26 +323,26 @@ input:focus {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #888;
-  margin: 0 0 14px;
+  margin: 0 0 0.9rem;
   text-transform: uppercase;
 }
 
 .filtro-secao {
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
 }
 
 /* Pílulas de categoria */
 .filtro-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.6rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .filtro-chip {
-  padding: 10px 18px;
+  padding: 0.6rem 1.1rem;
   border: 1.5px solid #e0d8d8;
   border-radius: 50px;
   font-size: 0.9rem;
@@ -360,7 +370,7 @@ input:focus {
 /* Botão aplicar filtro */
 .filtro-btn-aplicar {
   width: 100%;
-  padding: 16px;
+  padding: 1rem;
   background: #c8637e;
   color: #fff;
   border: none;
@@ -368,7 +378,7 @@ input:focus {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 0.5rem;
   transition: background 0.2s;
 }
 

@@ -1,0 +1,261 @@
+/* ===== Página de detalhe do produto ===== */
+.produto-carregando {
+  color: #0000009a;
+  font-size: var(--fs-base);
+}
+
+.produto-voltar {
+  display: inline-block;
+  color: #8a315c;
+  font-family: "poppins", sans-serif;
+  font-size: var(--fs-sm);
+  margin-bottom: 1rem;
+}
+
+.produto-detalhe {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+}
+
+/* Galeria: miniaturas à esquerda, foto principal à direita */
+.galery-photos {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  min-width: 0;
+}
+
+.produto-foto-principal {
+  flex: 1;
+  min-width: 0;
+  border-radius: 8px;
+}
+
+.produto-foto-principal::after {
+  display: none;
+}
+
+.galery-photos-img {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.produto-miniatura {
+  width: clamp(3.5rem, 2.8rem + 2vw, 5rem);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.produto-miniatura.ativa {
+  border-color: #8a315c;
+}
+
+/* Informações */
+.aligh-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #000;
+  min-width: 0;
+}
+
+.produto-tag {
+  color: #0000009a;
+  font-size: var(--fs-xs);
+  letter-spacing: 1px;
+}
+
+.produto-subcategoria {
+  background: #f5d9e8;
+  color: #8a315c;
+  font-size: var(--fs-xs);
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+}
+
+.produto-avaliacao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-sm);
+}
+
+.produto-avaliacao .estrelas {
+  color: #8a315c;
+  font-size: var(--fs-md);
+}
+
+.produto-selos {
+  display: flex;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.produto-selo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-sm);
+}
+
+.produto-selo i {
+  color: #8a315c;
+}
+
+.produto-preco {
+  color: #c4388d;
+  font-size: var(--fs-2xl);
+}
+
+.produto-quantidade {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: var(--fs-sm);
+}
+
+.seletor-quantidade {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: fit-content;
+  padding: 0.3rem;
+}
+
+.seletor-quantidade button {
+  padding: 0.5rem 0.9rem;
+  border: none;
+  background: none;
+  font-size: var(--fs-base);
+  cursor: pointer;
+}
+
+.seletor-quantidade span {
+  min-width: 1.25rem;
+  text-align: center;
+  font-size: var(--fs-base);
+}
+
+.produto-descricao,
+.produto-subdescricao {
+  color: #0000009a;
+  font-family: "poppins", sans-serif;
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  max-width: 44rem;
+}
+
+.produto-subdescricao {
+  margin-top: 2rem;
+}
+
+.btn-roxo {
+  color: #fff;
+  background-color: #8a315c;
+}
+
+.aligh-info .aligh-btn1 {
+  width: 100%;
+  max-width: 34rem;
+}
+
+/* Frete */
+.frete-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 24rem;
+  font-family: "poppins", sans-serif;
+}
+
+.frete-titulo {
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  margin-bottom: 0.5rem;
+}
+
+.frete-titulo i {
+  color: #8a315c;
+  margin-right: 0.4rem;
+}
+
+.frete-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.frete-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
+  font-size: var(--fs-sm);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.frete-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #8a315c;
+  color: #fff;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+.frete-erro,
+.frete-resultado {
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  margin-top: 0.5rem;
+}
+
+.frete-erro {
+  color: red;
+}
+
+.produto-relacionados {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.produto-relacionados .title-categorias {
+  text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+  .produto-detalhe {
+    grid-template-columns: 1fr;
+  }
+
+  .galery-photos {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .galery-photos {
+    flex-direction: column;
+  }
+
+  .galery-photos-img {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .aligh-info .aligh-btn1 .btn-novidades {
+    flex-basis: 100%;
+  }
+}

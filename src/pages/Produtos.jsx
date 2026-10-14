@@ -60,7 +60,7 @@ export default function Produtos() {
   return (
     <section className="home-produtos" id="produtos">
       <div className="align-texto-produto">
-        <p className="produto-texto1" style={{ color: "#0000009a" }}>
+        <p className="produto-texto1">
           CATÁLOGO
         </p>
         <h1 className="produtos-titulo1">
@@ -73,7 +73,7 @@ export default function Produtos() {
       </div>
 
       <div className="align-pesquisa-produtos">
-        <img src="/pressets/search.svg" alt="pesquisa" />
+        <img src="/pressets/search.svg" alt="" aria-hidden="true" />
         <input
           className="pesquisa-produtos"
           type="search"
@@ -158,9 +158,7 @@ export default function Produtos() {
                 <ProdutoCard produto={p} key={p.slug} />
               ))
             ) : (
-              <p style={{ color: "#0000009a", gridColumn: "1 / -1" }}>
-                Nenhum produto encontrado.
-              </p>
+              <p className="produtos-vazio">Nenhum produto encontrado.</p>
             )}
           </ul>
         </div>

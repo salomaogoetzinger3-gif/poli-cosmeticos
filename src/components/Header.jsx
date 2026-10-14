@@ -44,7 +44,7 @@ export default function Header() {
             />
           </Link>
         </div>
-        <div className="main-header img2">
+        <div className="img2">
           <img
             className="logo2"
             src="/pressets/poli_logo2.png"
@@ -73,38 +73,20 @@ export default function Header() {
         <div className="nav-carrinho">
           <ul>
             <li>
-              <a href="#" className="favoritos">
+              <a href="#" className="favoritos" aria-label="Favoritos">
                 <i className="fa-solid fa-heart"></i>
               </a>
             </li>
           </ul>
-          <Link
-            to="/carrinho"
-            style={{ position: "relative", fontSize: "20px", color: "#fff" }}
-          >
+          <Link to="/carrinho" className="carrinho-link" aria-label="Carrinho">
             <i className="fa-solid fa-cart-arrow-down"></i>
             {totalItens > 0 && (
-              <span
-                style={{
-                  position: "absolute",
-                  top: -8,
-                  right: -8,
-                  background: "#8a315c",
-                  color: "#fff",
-                  fontSize: 11,
-                  borderRadius: "50%",
-                  width: 18,
-                  height: 18,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <span className="carrinho-badge">
                 {totalItens}
               </span>
             )}
           </Link>
-          <a className="links-nav" href="#">
+          <a className="links-nav" href="#" aria-label="Minha conta">
             <i className="fa-regular fa-user"></i>
           </a>
         </div>
@@ -117,25 +99,10 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <Link to="/carrinho" style={{ position: "relative" }}>
+                <Link to="/carrinho" className="carrinho-link" aria-label="Carrinho">
                   <i className="fa-solid fa-cart-arrow-down"></i>
                   {totalItens > 0 && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: -8,
-                        right: -8,
-                        background: "#8a315c",
-                        color: "#fff",
-                        fontSize: 11,
-                        borderRadius: "50%",
-                        width: 18,
-                        height: 18,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
+                    <span className="carrinho-badge">
                       {totalItens}
                     </span>
                   )}
@@ -144,7 +111,7 @@ export default function Header() {
             </ul>
           </div>
           <div className="mobile-menu-icon">
-            <button onClick={menuShow}>
+            <button onClick={menuShow} aria-label="Abrir menu" aria-expanded={menuAberto}>
               <i className="fa-solid fa-bars"></i>
             </button>
           </div>
